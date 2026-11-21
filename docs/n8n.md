@@ -21,3 +21,12 @@ O n8n recebe o pedido, chama a API e decide o próximo passo pelo campo `status`
    - `falha_provedor`, `saida_invalida` ou `email_invalido` (502): grave como `revisar` para uma pessoa olhar
 
 Depois de montar, exporte o fluxo (sem credenciais) para `n8n/fluxo_pedidos.json`.
+
+## Versão montada (21/11/2026)
+O fluxo está em `n8n/fluxo_pedidos.json` (importe em Workflows → Import from file). Diferenças em relação ao desenho acima:
+- **Gatilho:** n8n Form (dois campos: texto do pedido e e-mail do solicitante).
+- **Armazenamento:** n8n Data Table `pedidos_processados` (crie uma com o mesmo nome e as colunas do nó de gravação) em vez de Google Sheets.
+- **Erros:** o HTTP Request usa `neverError`; qualquer resposta com `erro.codigo` vira uma linha com status `bloqueado`, `pedido_sem_item` ou `revisar`. O e-mail só é enviado quando o status é `pendente`.
+- **Ainda não tratado:** e-mail de resposta para `pedido_sem_item` e aviso a Compras quando o pedido está completo.
+- **Credenciais (não vão no arquivo):** Header Auth com nome `x-api-key` e o segredo da chave `n8n`; conta Gmail por OAuth.
+- **Teste feito em 21/11/2026:** pedido do detergente gerou `pendente`, e-mail citando `valor_unitario` e `fornecedor`, uma linha na tabela e custo de cerca de US$ 0,00027. É um teste isolado, não a medição (ver `docs/medicao.md`).

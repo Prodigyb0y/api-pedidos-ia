@@ -1,0 +1,411 @@
+{
+  "name": "Pedidos de compra - API Gutenberg",
+  "nodes": [
+    {
+      "parameters": {
+        "formTitle": "Pedido de compra",
+        "formDescription": "Cole o texto livre do pedido. A API extrai os campos e avisa o que falta.",
+        "formFields": {
+          "values": [
+            {
+              "fieldLabel": "Texto do pedido",
+              "fieldType": "textarea",
+              "fieldName": "texto",
+              "placeholder": "O Almoxarifado precisa de 25 kg de detergente industrial ate 05/01/2027.",
+              "requiredField": true
+            },
+            {
+              "fieldLabel": "E-mail do solicitante",
+              "fieldType": "email",
+              "fieldName": "email_solicitante",
+              "placeholder": "nome@gutenberg-systems.example",
+              "requiredField": true
+            }
+          ]
+        },
+        "options": {
+          "appendAttribution": false,
+          "buttonLabel": "Enviar pedido",
+          "path": "pedido-compra",
+          "respondWithOptions": {
+            "values": {
+              "formSubmittedText": "Pedido recebido. Se faltar alguma informação, você recebe um e-mail."
+            }
+          }
+        }
+      },
+      "name": "Formulário de pedido",
+      "type": "n8n-nodes-base.formTrigger",
+      "typeVersion": 2.6,
+      "position": [
+        240,
+        304
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api-pedidos-mu.vercel.app/api/v1/processar",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "x-id-pedido",
+              "value": "=pedido-{{ $execution.id }}"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ { \"texto\": $json.texto ?? $json[\"Texto do pedido\"] } }}",
+        "options": {
+          "response": {
+            "response": {
+              "neverError": true,
+              "responseFormat": "json"
+            }
+          },
+          "timeout": 30000
+        }
+      },
+      "name": "Processar pedido na API",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.4,
+      "position": [
+        544,
+        304
+      ],
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "dataTableId": {
+          "__rl": true,
+          "mode": "name",
+          "value": "pedidos_processados"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "recebido_em": "={{ $(\"Formulário de pedido\").item.json.submittedAt }}",
+            "id_execucao": "={{ $execution.id }}",
+            "email_solicitante": "={{ $(\"Formulário de pedido\").item.json.email_solicitante ?? $(\"Formulário de pedido\").item.json[\"E-mail do solicitante\"] }}",
+            "texto_original": "={{ $(\"Formulário de pedido\").item.json.texto ?? $(\"Formulário de pedido\").item.json[\"Texto do pedido\"] }}",
+            "status": "={{ $json.erro ? ($json.erro.codigo === \"pedido_sem_item\" ? \"pedido_sem_item\" : ([\"limite_diario\", \"teto_de_gasto\"].includes($json.erro.codigo) ? \"bloqueado\" : \"revisar\")) : $json.status }}",
+            "codigo_erro": "={{ $json.erro?.codigo ?? \"\" }}",
+            "solicitante_area": "={{ $json.dados?.solicitante_area ?? \"\" }}",
+            "item": "={{ $json.dados?.item ?? \"\" }}",
+            "quantidade": "={{ $json.dados?.quantidade ?? null }}",
+            "unidade": "={{ $json.dados?.unidade ?? \"\" }}",
+            "prazo_entrega": "={{ $json.dados?.prazo_entrega ?? \"\" }}",
+            "valor_unitario": "={{ $json.dados?.valor_unitario ?? null }}",
+            "moeda": "={{ $json.dados?.moeda ?? \"\" }}",
+            "fornecedor": "={{ $json.dados?.fornecedor ?? \"\" }}",
+            "faltantes": "={{ ($json.faltantes ?? []).join(\", \") }}",
+            "email_assunto": "={{ $json.email?.assunto ?? \"\" }}",
+            "email_corpo": "={{ $json.email?.corpo ?? \"\" }}",
+            "custo_usd": "={{ $json.custo_usd ?? null }}",
+            "latencia_modelo_ms": "={{ $json.latencia_modelo_ms ?? null }}"
+          },
+          "schema": [
+            {
+              "id": "recebido_em",
+              "displayName": "recebido_em",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "id_execucao",
+              "displayName": "id_execucao",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "email_solicitante",
+              "displayName": "email_solicitante",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "texto_original",
+              "displayName": "texto_original",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "status",
+              "displayName": "status",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "codigo_erro",
+              "displayName": "codigo_erro",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "solicitante_area",
+              "displayName": "solicitante_area",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "item",
+              "displayName": "item",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "quantidade",
+              "displayName": "quantidade",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "unidade",
+              "displayName": "unidade",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "prazo_entrega",
+              "displayName": "prazo_entrega",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "valor_unitario",
+              "displayName": "valor_unitario",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "moeda",
+              "displayName": "moeda",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "fornecedor",
+              "displayName": "fornecedor",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "faltantes",
+              "displayName": "faltantes",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "email_assunto",
+              "displayName": "email_assunto",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "email_corpo",
+              "displayName": "email_corpo",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "custo_usd",
+              "displayName": "custo_usd",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "latencia_modelo_ms",
+              "displayName": "latencia_modelo_ms",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true
+            }
+          ]
+        },
+        "options": {}
+      },
+      "name": "Gravar na tabela pedidos_processados",
+      "type": "n8n-nodes-base.dataTable",
+      "typeVersion": 1.1,
+      "position": [
+        848,
+        304
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "leftValue": "={{ $('Processar pedido na API').item.json.status }}",
+              "operator": {
+                "type": "string",
+                "operation": "equals"
+              },
+              "rightValue": "pendente"
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "name": "Pedido pendente?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        1136,
+        304
+      ]
+    },
+    {
+      "parameters": {
+        "sendTo": "={{ $(\"Formulário de pedido\").item.json.email_solicitante ?? $(\"Formulário de pedido\").item.json[\"E-mail do solicitante\"] }}",
+        "subject": "={{ $('Processar pedido na API').item.json.email.assunto }}",
+        "emailType": "text",
+        "message": "={{ $('Processar pedido na API').item.json.email.corpo }}",
+        "options": {
+          "appendAttribution": false
+        }
+      },
+      "name": "E-mail pedindo o que falta",
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.2,
+      "position": [
+        1440,
+        208
+      ],
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "content": "## Pedidos de compra\nFormulário → API de Pedidos → tabela → e-mail se faltar campo.\nCredencial x-api-key: Header Auth, nome `x-api-key`, valor = segredo da chave `n8n`.",
+        "height": 320,
+        "width": 1360,
+        "color": 4
+      },
+      "name": "Nota",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        208,
+        112
+      ]
+    }
+  ],
+  "connections": {
+    "Formulário de pedido": {
+      "main": [
+        [
+          {
+            "node": "Processar pedido na API",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Processar pedido na API": {
+      "main": [
+        [
+          {
+            "node": "Gravar na tabela pedidos_processados",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Gravar na tabela pedidos_processados": {
+      "main": [
+        [
+          {
+            "node": "Pedido pendente?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Pedido pendente?": {
+      "main": [
+        [
+          {
+            "node": "E-mail pedindo o que falta",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1"
+  }
+}
