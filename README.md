@@ -63,9 +63,17 @@ Pedido (e-mail ou formulário) → n8n → POST /api/v1/processar
 - **Sem dependências:** JavaScript puro em funções da Vercel; a chamada ao modelo usa a API HTTP da Anthropic.
 
 ## Resultados
-**Medição pendente.** O plano (`docs/medicao.md`): 20 pedidos novos fictícios com gabarito escrito antes, enviados pelo fluxo do n8n, medindo acerto dos campos, acerto do status, e-mails citando exatamente os faltantes, tempo de ponta a ponta e custo por pedido, comparados com o processo manual cronometrado.
+Medidos em 21/11/2026 com 20 pedidos fictícios e gabarito escrito antes, enviados pelo fluxo do n8n (método, dados e limitações em [`docs/resultados_medicao.md`](docs/resultados_medicao.md)):
 
-O que já está medido vem do Prompt Lab, com os mesmos prompts: extração 100% em 50 casos de desenvolvimento e em 20 pedidos novos (só 6 de valor total); e-mail 98,3% em 60 respostas. Esses números são do laboratório, não desta API.
+| Medida | Resultado |
+|---|---|
+| Campos corretos | 160 de 160 |
+| Status correto | 20 de 20 |
+| E-mails citando exatamente os campos faltantes | 10 de 10 |
+| Tempo de execução no n8n (mediana) | 2,03 s |
+| Custo por pedido (média) | US$ 0,000218 |
+
+Amostra pequena, uma rodada, casos escritos por assistente de IA e revisados pelo autor: não prova acerto geral. **Comparação com o processo manual: medição pendente.**
 
 ## Como rodar
 **Na Vercel (recomendado):** importe o repositório em vercel.com → Add New → Project, cadastre as variáveis abaixo (Production e Preview) e publique. Cada push em `main` publica de novo.

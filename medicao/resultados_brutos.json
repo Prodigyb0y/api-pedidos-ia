@@ -1,0 +1,483 @@
+{
+  "coletado_em": "2026-11-21",
+  "fonte": "linhas da tabela pedidos_processados (n8n) e metadados das execuções 15 a 34",
+  "casos": [
+    {
+      "id": "C01",
+      "execucao": 15,
+      "dados": {
+        "solicitante_area": "Almoxarifado",
+        "item": "luvas de procedimento",
+        "quantidade": 40,
+        "unidade": "cx",
+        "prazo_entrega": "2027-02-15",
+        "valor_unitario": 38.9,
+        "moeda": "BRL",
+        "fornecedor": "Distribuidora Aurora"
+      },
+      "status": "completo",
+      "faltantes": [],
+      "custo_usd": 0.000132,
+      "latencia_modelo_ms": 928,
+      "inicio": "2026-11-21T22:51:51.171Z",
+      "fim": "2026-11-21T22:51:52.855Z",
+      "email": null
+    },
+    {
+      "id": "C02",
+      "execucao": 16,
+      "dados": {
+        "solicitante_area": "Manutenção",
+        "item": "cabo flexível 2,5 mm",
+        "quantidade": 12,
+        "unidade": "m",
+        "prazo_entrega": "2027-03-10",
+        "valor_unitario": 25,
+        "moeda": "BRL",
+        "fornecedor": "Eletro Norte"
+      },
+      "status": "completo",
+      "faltantes": [],
+      "custo_usd": 0.000183,
+      "latencia_modelo_ms": 1072,
+      "inicio": "2026-11-21T22:51:54.648Z",
+      "fim": "2026-11-21T22:51:56.246Z",
+      "email": null
+    },
+    {
+      "id": "C03",
+      "execucao": 17,
+      "dados": {
+        "solicitante_area": "TI",
+        "item": "SSD NVMe 1TB",
+        "quantidade": 8,
+        "unidade": "un",
+        "prazo_entrega": "2027-01-20",
+        "valor_unitario": 89.5,
+        "moeda": "USD",
+        "fornecedor": "TechSul Importações"
+      },
+      "status": "completo",
+      "faltantes": [],
+      "custo_usd": 0.000127,
+      "latencia_modelo_ms": 662,
+      "inicio": "2026-11-21T22:51:58.006Z",
+      "fim": "2026-11-21T22:51:59.447Z",
+      "email": null
+    },
+    {
+      "id": "C04",
+      "execucao": 18,
+      "dados": {
+        "solicitante_area": "Engenharia de Processos",
+        "item": "sensor de pressão industrial",
+        "quantidade": 2,
+        "unidade": "un",
+        "prazo_entrega": "2027-04-30",
+        "valor_unitario": 1250,
+        "moeda": "EUR",
+        "fornecedor": "Weber Sensorik GmbH"
+      },
+      "status": "completo",
+      "faltantes": [],
+      "custo_usd": 0.000133,
+      "latencia_modelo_ms": 704,
+      "inicio": "2026-11-21T22:52:01.018Z",
+      "fim": "2026-11-21T22:52:02.107Z",
+      "email": null
+    },
+    {
+      "id": "C05",
+      "execucao": 19,
+      "dados": {
+        "solicitante_area": "Qualidade",
+        "item": "álcool isopropílico",
+        "quantidade": 60,
+        "unidade": "l",
+        "prazo_entrega": "2027-02-12",
+        "valor_unitario": 14.2,
+        "moeda": "BRL",
+        "fornecedor": "Química Vale"
+      },
+      "status": "completo",
+      "faltantes": [],
+      "custo_usd": 0.000129,
+      "latencia_modelo_ms": 816,
+      "inicio": "2026-11-21T22:52:04.550Z",
+      "fim": "2026-11-21T22:52:05.907Z",
+      "email": null
+    },
+    {
+      "id": "C06",
+      "execucao": 20,
+      "dados": {
+        "solicitante_area": "RH",
+        "item": "canecas personalizadas",
+        "quantidade": 50,
+        "unidade": "un",
+        "prazo_entrega": "2027-03-01",
+        "valor_unitario": 18,
+        "moeda": "BRL",
+        "fornecedor": "Brindes Tio Beto"
+      },
+      "status": "completo",
+      "faltantes": [],
+      "custo_usd": 0.000126,
+      "latencia_modelo_ms": 680,
+      "inicio": "2026-11-21T22:52:08.073Z",
+      "fim": "2026-11-21T22:52:09.152Z",
+      "email": null
+    },
+    {
+      "id": "C07",
+      "execucao": 21,
+      "dados": {
+        "solicitante_area": "Facilities",
+        "item": "papel sulfite A4",
+        "quantidade": 6,
+        "unidade": "cx",
+        "prazo_entrega": "2027-01-25",
+        "valor_unitario": 35,
+        "moeda": "USD",
+        "fornecedor": "Papelaria Central"
+      },
+      "status": "completo",
+      "faltantes": [],
+      "custo_usd": 0.00018,
+      "latencia_modelo_ms": 1043,
+      "inicio": "2026-11-21T22:52:11.837Z",
+      "fim": "2026-11-21T22:52:13.391Z",
+      "email": null
+    },
+    {
+      "id": "C08",
+      "execucao": 22,
+      "dados": {
+        "solicitante_area": "Segurança do Trabalho",
+        "item": "fita antiderrapante",
+        "quantidade": 150,
+        "unidade": "m",
+        "prazo_entrega": "2027-02-18",
+        "valor_unitario": 7.8,
+        "moeda": "BRL",
+        "fornecedor": "SafeGrip"
+      },
+      "status": "completo",
+      "faltantes": [],
+      "custo_usd": 0.000129,
+      "latencia_modelo_ms": 726,
+      "inicio": "2026-11-21T22:52:15.271Z",
+      "fim": "2026-11-21T22:52:16.389Z",
+      "email": null
+    },
+    {
+      "id": "C09",
+      "execucao": 23,
+      "dados": {
+        "solicitante_area": "Produção",
+        "item": "rolamento 6205",
+        "quantidade": 3,
+        "unidade": "un",
+        "prazo_entrega": "2027-04-09",
+        "valor_unitario": 1480,
+        "moeda": "BRL",
+        "fornecedor": "Rolamentos Brasil"
+      },
+      "status": "completo",
+      "faltantes": [],
+      "custo_usd": 0.000126,
+      "latencia_modelo_ms": 632,
+      "inicio": "2026-11-21T22:52:18.293Z",
+      "fim": "2026-11-21T22:52:19.310Z",
+      "email": null
+    },
+    {
+      "id": "C10",
+      "execucao": 24,
+      "dados": {
+        "solicitante_area": "Financeiro",
+        "item": "grampos para grampeador",
+        "quantidade": 5,
+        "unidade": "cx",
+        "prazo_entrega": "2027-01-22",
+        "valor_unitario": 9.9,
+        "moeda": "BRL",
+        "fornecedor": "Office Prime"
+      },
+      "status": "completo",
+      "faltantes": [],
+      "custo_usd": 0.000126,
+      "latencia_modelo_ms": 720,
+      "inicio": "2026-11-21T22:52:21.355Z",
+      "fim": "2026-11-21T22:52:22.619Z",
+      "email": null
+    },
+    {
+      "id": "I01",
+      "execucao": 25,
+      "dados": {
+        "solicitante_area": "Almoxarifado",
+        "item": "desengraxante industrial",
+        "quantidade": 18,
+        "unidade": "l",
+        "prazo_entrega": "2027-01-28",
+        "valor_unitario": null,
+        "moeda": null,
+        "fornecedor": null
+      },
+      "status": "pendente",
+      "faltantes": [
+        "valor_unitario",
+        "fornecedor"
+      ],
+      "custo_usd": 0.000318,
+      "latencia_modelo_ms": 2066,
+      "inicio": "2026-11-21T22:52:23.968Z",
+      "fim": "2026-11-21T22:52:27.055Z",
+      "email": {
+        "assunto": "Solicitação de compra: desengraxante industrial",
+        "corpo": "Olá,\n\nRecebemos sua solicitação de 18 litros de desengraxante industrial.\n\nPara dar andamento à compra, preciso que você nos informe:\n\n- valor unitário (com a moeda)\n- fornecedor\n\nAssim que tivermos essas informações, seguimos com o processo.\n\nObrigado,\n\nEquipe de Compras · Gutenberg Systems"
+      }
+    },
+    {
+      "id": "I02",
+      "execucao": 26,
+      "dados": {
+        "solicitante_area": null,
+        "item": "lâmpadas LED 18W",
+        "quantidade": 10,
+        "unidade": "un",
+        "prazo_entrega": "2027-02-14",
+        "valor_unitario": 12,
+        "moeda": "BRL",
+        "fornecedor": "Luminar"
+      },
+      "status": "pendente",
+      "faltantes": [
+        "solicitante_area"
+      ],
+      "custo_usd": 0.000268,
+      "latencia_modelo_ms": 1769,
+      "inicio": "2026-11-21T22:52:27.043Z",
+      "fim": "2026-11-21T22:52:29.668Z",
+      "email": {
+        "assunto": "Solicitação de compra: lâmpadas LED 18W",
+        "corpo": "Olá,\n\nRecebemos sua solicitação de 10 unidades de lâmpadas LED 18W.\n\nPara dar seguimento, precisamos da seguinte informação:\n\n- área solicitante\n\nAssim que recebermos, damos andamento à compra.\n\nObrigado!\n\nEquipe de Compras · Gutenberg Systems"
+      }
+    },
+    {
+      "id": "I03",
+      "execucao": 27,
+      "dados": {
+        "solicitante_area": "Manutenção",
+        "item": "válvula esfera de meia polegada",
+        "quantidade": 4,
+        "unidade": "un",
+        "prazo_entrega": null,
+        "valor_unitario": 95,
+        "moeda": "BRL",
+        "fornecedor": "Hidrofluxo"
+      },
+      "status": "pendente",
+      "faltantes": [
+        "prazo_entrega"
+      ],
+      "custo_usd": 0.000273,
+      "latencia_modelo_ms": 1898,
+      "inicio": "2026-11-21T22:52:30.357Z",
+      "fim": "2026-11-21T22:52:33.076Z",
+      "email": {
+        "assunto": "Solicitação de compra: válvula esfera de meia polegada",
+        "corpo": "Olá,\n\nRecebemos sua solicitação de 4 unidades de válvula esfera de meia polegada.\n\nPara dar andamento, precisamos das seguintes informações:\n\n- prazo de entrega\n\nAssim que você responder, seguimos com a compra.\n\nObrigado!\n\nEquipe de Compras · Gutenberg Systems"
+      }
+    },
+    {
+      "id": "I04",
+      "execucao": 28,
+      "dados": {
+        "solicitante_area": "Qualidade",
+        "item": "paquímetro digital",
+        "quantidade": 12,
+        "unidade": "un",
+        "prazo_entrega": null,
+        "valor_unitario": 210,
+        "moeda": "BRL",
+        "fornecedor": null
+      },
+      "status": "pendente",
+      "faltantes": [
+        "prazo_entrega",
+        "fornecedor"
+      ],
+      "custo_usd": 0.000259,
+      "latencia_modelo_ms": 1717,
+      "inicio": "2026-11-21T22:52:33.291Z",
+      "fim": "2026-11-21T22:52:35.855Z",
+      "email": {
+        "assunto": "Solicitação de compra: paquímetro digital",
+        "corpo": "Olá,\n\nRecebemos sua solicitação de 12 unidades de paquímetro digital. Para dar andamento, precisamos das seguintes informações:\n\n- prazo de entrega\n- fornecedor\n\nAssim que receber, seguimos com a compra. Obrigado!\n\nEquipe de Compras · Gutenberg Systems"
+      }
+    },
+    {
+      "id": "I05",
+      "execucao": 29,
+      "dados": {
+        "solicitante_area": "TI",
+        "item": "switch 24 portas",
+        "quantidade": 3,
+        "unidade": "un",
+        "prazo_entrega": null,
+        "valor_unitario": 900,
+        "moeda": "BRL",
+        "fornecedor": "NetPlus"
+      },
+      "status": "pendente",
+      "faltantes": [
+        "prazo_entrega"
+      ],
+      "custo_usd": 0.000441,
+      "latencia_modelo_ms": 3313,
+      "inicio": "2026-11-21T22:52:36.482Z",
+      "fim": "2026-11-21T22:52:40.604Z",
+      "email": {
+        "assunto": "Solicitação de compra: switch 24 portas",
+        "corpo": "Olá!\n\nRecebemos sua solicitação de compra de 3 unidades de switch 24 portas.\n\nPara dar seguimento, precisamos da seguinte informação:\n\n- prazo de entrega\n\nAssim que você responder, damos andamento ao processo.\n\nObrigado!\n\nEquipe de Compras · Gutenberg Systems"
+      }
+    },
+    {
+      "id": "I06",
+      "execucao": 30,
+      "dados": {
+        "solicitante_area": null,
+        "item": "fita adesiva",
+        "quantidade": 7,
+        "unidade": "cx",
+        "prazo_entrega": null,
+        "valor_unitario": null,
+        "moeda": null,
+        "fornecedor": null
+      },
+      "status": "pendente",
+      "faltantes": [
+        "solicitante_area",
+        "prazo_entrega",
+        "valor_unitario",
+        "fornecedor"
+      ],
+      "custo_usd": 0.000267,
+      "latencia_modelo_ms": 1860,
+      "inicio": "2026-11-21T22:52:39.122Z",
+      "fim": "2026-11-21T22:52:41.788Z",
+      "email": {
+        "assunto": "Solicitação de compra: fita adesiva",
+        "corpo": "Olá,\n\nRecebemos sua solicitação de 7 caixas (cx) de fita adesiva. Para dar andamento, precisamos das seguintes informações:\n\n- área solicitante\n- prazo de entrega\n- valor unitário (com a moeda)\n- fornecedor\n\nAssim que você responder, seguimos com o processo.\n\nObrigado pela colaboração.\n\nEquipe de Compras · Gutenberg Systems"
+      }
+    },
+    {
+      "id": "I07",
+      "execucao": 31,
+      "dados": {
+        "solicitante_area": null,
+        "item": "parafuso sextavado M8",
+        "quantidade": 500,
+        "unidade": "un",
+        "prazo_entrega": "2027-03-03",
+        "valor_unitario": null,
+        "moeda": null,
+        "fornecedor": "Parafusos & Cia"
+      },
+      "status": "pendente",
+      "faltantes": [
+        "solicitante_area",
+        "valor_unitario"
+      ],
+      "custo_usd": 0.000275,
+      "latencia_modelo_ms": 2376,
+      "inicio": "2026-11-21T22:52:42.627Z",
+      "fim": "2026-11-21T22:52:45.839Z",
+      "email": {
+        "assunto": "Solicitação de compra: parafuso sextavado M8",
+        "corpo": "Olá,\n\nRecebemos sua solicitação de 500 unidades de parafuso sextavado M8.\n\nPara dar andamento, precisamos das seguintes informações:\n\n- área solicitante\n- valor unitário (com a moeda)\n\nAssim que tivermos esses dados, seguimos com a compra.\n\nObrigado,\n\nEquipe de Compras · Gutenberg Systems"
+      }
+    },
+    {
+      "id": "I08",
+      "execucao": 32,
+      "dados": {
+        "solicitante_area": "Engenharia",
+        "item": "mangueira hidráulica",
+        "quantidade": 9,
+        "unidade": "m",
+        "prazo_entrega": "2027-02-11",
+        "valor_unitario": 15,
+        "moeda": "USD",
+        "fornecedor": null
+      },
+      "status": "pendente",
+      "faltantes": [
+        "fornecedor"
+      ],
+      "custo_usd": 0.00027,
+      "latencia_modelo_ms": 1993,
+      "inicio": "2026-11-21T22:52:45.782Z",
+      "fim": "2026-11-21T22:52:48.565Z",
+      "email": {
+        "assunto": "Solicitação de compra: mangueira hidráulica, pendência de fornecedor",
+        "corpo": "Olá,\n\nRecebemos sua solicitação de 9 m de mangueira hidráulica. Para dar andamento, precisamos de mais uma informação:\n\n- fornecedor\n\nAssim que recebermos, seguimos com a cotação.\n\nObrigado pela colaboração.\n\nEquipe de Compras · Gutenberg Systems"
+      }
+    },
+    {
+      "id": "I09",
+      "execucao": 33,
+      "dados": {
+        "solicitante_area": "Produção",
+        "item": "graxa para rolamentos",
+        "quantidade": 35,
+        "unidade": "kg",
+        "prazo_entrega": null,
+        "valor_unitario": null,
+        "moeda": null,
+        "fornecedor": "LubriMax"
+      },
+      "status": "pendente",
+      "faltantes": [
+        "prazo_entrega",
+        "valor_unitario"
+      ],
+      "custo_usd": 0.000269,
+      "latencia_modelo_ms": 1729,
+      "inicio": "2026-11-21T22:52:48.817Z",
+      "fim": "2026-11-21T22:52:51.200Z",
+      "email": {
+        "assunto": "Solicitação de compra: graxa para rolamentos",
+        "corpo": "Olá,\n\nRecebemos sua solicitação de 35 kg de graxa para rolamentos.\n\nPara dar sequência, preciso das seguintes informações:\n- prazo de entrega\n- valor unitário (com a moeda)\n\nAssim que tiver esses dados, seguimos com a compra.\n\nObrigado!\n\nEquipe de Compras · Gutenberg Systems"
+      }
+    },
+    {
+      "id": "I10",
+      "execucao": 34,
+      "dados": {
+        "solicitante_area": "Facilities",
+        "item": "cadeira de escritório",
+        "quantidade": 14,
+        "unidade": "un",
+        "prazo_entrega": null,
+        "valor_unitario": 540,
+        "moeda": "BRL",
+        "fornecedor": "Móveis Horizonte"
+      },
+      "status": "pendente",
+      "faltantes": [
+        "prazo_entrega"
+      ],
+      "custo_usd": 0.000321,
+      "latencia_modelo_ms": 2262,
+      "inicio": "2026-11-21T22:52:52.220Z",
+      "fim": "2026-11-21T22:52:55.260Z",
+      "email": {
+        "assunto": "Solicitação de compra: cadeira de escritório",
+        "corpo": "Olá,\n\nRecebemos sua solicitação de 14 unidades de cadeira de escritório.\n\nPara dar andamento, precisamos das seguintes informações:\n\n- prazo de entrega\n\nAssim que você responder, seguimos com a compra.\n\nObrigado pela atenção.\n\nEquipe de Compras · Gutenberg Systems"
+      }
+    }
+  ]
+}

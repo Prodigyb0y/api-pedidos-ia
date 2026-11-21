@@ -1,0 +1,221 @@
+{
+  "data": "2026-11-21",
+  "n_casos": 20,
+  "sha256_casos": "f6562ee46373a183e0a0051d225391358982ee64d3fcd65046b54d839294e7ec",
+  "campos": {
+    "certos": 160,
+    "total": 160
+  },
+  "status": {
+    "certos": 20,
+    "total": 20
+  },
+  "faltantes": {
+    "certos": 20,
+    "total": 20
+  },
+  "emails_citam_exatamente_os_faltantes": {
+    "certos": 10,
+    "total": 10
+  },
+  "completos_sem_email": {
+    "certos": 10,
+    "total": 10
+  },
+  "tempo_execucao_n8n_s": {
+    "mediana": 2.03,
+    "media": 2.12,
+    "max": 4.12,
+    "mediana_completos": 1.31,
+    "mediana_pendentes": 2.75
+  },
+  "custo_usd": {
+    "total": 0.004352,
+    "medio": 0.000218,
+    "mediana": 0.000221,
+    "max": 0.000441
+  },
+  "divergencias": [],
+  "por_caso": [
+    {
+      "id": "C01",
+      "campos_certos": 8,
+      "status_ok": true,
+      "faltantes_ok": true,
+      "email_ok": null,
+      "tempo_s": 1.684,
+      "custo_usd": 0.000132
+    },
+    {
+      "id": "C02",
+      "campos_certos": 8,
+      "status_ok": true,
+      "faltantes_ok": true,
+      "email_ok": null,
+      "tempo_s": 1.598,
+      "custo_usd": 0.000183
+    },
+    {
+      "id": "C03",
+      "campos_certos": 8,
+      "status_ok": true,
+      "faltantes_ok": true,
+      "email_ok": null,
+      "tempo_s": 1.441,
+      "custo_usd": 0.000127
+    },
+    {
+      "id": "C04",
+      "campos_certos": 8,
+      "status_ok": true,
+      "faltantes_ok": true,
+      "email_ok": null,
+      "tempo_s": 1.089,
+      "custo_usd": 0.000133
+    },
+    {
+      "id": "C05",
+      "campos_certos": 8,
+      "status_ok": true,
+      "faltantes_ok": true,
+      "email_ok": null,
+      "tempo_s": 1.357,
+      "custo_usd": 0.000129
+    },
+    {
+      "id": "C06",
+      "campos_certos": 8,
+      "status_ok": true,
+      "faltantes_ok": true,
+      "email_ok": null,
+      "tempo_s": 1.079,
+      "custo_usd": 0.000126
+    },
+    {
+      "id": "C07",
+      "campos_certos": 8,
+      "status_ok": true,
+      "faltantes_ok": true,
+      "email_ok": null,
+      "tempo_s": 1.554,
+      "custo_usd": 0.00018
+    },
+    {
+      "id": "C08",
+      "campos_certos": 8,
+      "status_ok": true,
+      "faltantes_ok": true,
+      "email_ok": null,
+      "tempo_s": 1.118,
+      "custo_usd": 0.000129
+    },
+    {
+      "id": "C09",
+      "campos_certos": 8,
+      "status_ok": true,
+      "faltantes_ok": true,
+      "email_ok": null,
+      "tempo_s": 1.017,
+      "custo_usd": 0.000126
+    },
+    {
+      "id": "C10",
+      "campos_certos": 8,
+      "status_ok": true,
+      "faltantes_ok": true,
+      "email_ok": null,
+      "tempo_s": 1.264,
+      "custo_usd": 0.000126
+    },
+    {
+      "id": "I01",
+      "campos_certos": 8,
+      "status_ok": true,
+      "faltantes_ok": true,
+      "email_ok": true,
+      "tempo_s": 3.087,
+      "custo_usd": 0.000318
+    },
+    {
+      "id": "I02",
+      "campos_certos": 8,
+      "status_ok": true,
+      "faltantes_ok": true,
+      "email_ok": true,
+      "tempo_s": 2.625,
+      "custo_usd": 0.000268
+    },
+    {
+      "id": "I03",
+      "campos_certos": 8,
+      "status_ok": true,
+      "faltantes_ok": true,
+      "email_ok": true,
+      "tempo_s": 2.719,
+      "custo_usd": 0.000273
+    },
+    {
+      "id": "I04",
+      "campos_certos": 8,
+      "status_ok": true,
+      "faltantes_ok": true,
+      "email_ok": true,
+      "tempo_s": 2.564,
+      "custo_usd": 0.000259
+    },
+    {
+      "id": "I05",
+      "campos_certos": 8,
+      "status_ok": true,
+      "faltantes_ok": true,
+      "email_ok": true,
+      "tempo_s": 4.122,
+      "custo_usd": 0.000441
+    },
+    {
+      "id": "I06",
+      "campos_certos": 8,
+      "status_ok": true,
+      "faltantes_ok": true,
+      "email_ok": true,
+      "tempo_s": 2.666,
+      "custo_usd": 0.000267
+    },
+    {
+      "id": "I07",
+      "campos_certos": 8,
+      "status_ok": true,
+      "faltantes_ok": true,
+      "email_ok": true,
+      "tempo_s": 3.212,
+      "custo_usd": 0.000275
+    },
+    {
+      "id": "I08",
+      "campos_certos": 8,
+      "status_ok": true,
+      "faltantes_ok": true,
+      "email_ok": true,
+      "tempo_s": 2.783,
+      "custo_usd": 0.00027
+    },
+    {
+      "id": "I09",
+      "campos_certos": 8,
+      "status_ok": true,
+      "faltantes_ok": true,
+      "email_ok": true,
+      "tempo_s": 2.383,
+      "custo_usd": 0.000269
+    },
+    {
+      "id": "I10",
+      "campos_certos": 8,
+      "status_ok": true,
+      "faltantes_ok": true,
+      "email_ok": true,
+      "tempo_s": 3.04,
+      "custo_usd": 0.000321
+    }
+  ]
+}
