@@ -1,0 +1,469 @@
+{
+  "versao": 1,
+  "empresa": "Gutenberg Systems (fictícia)",
+  "escrito_em": "2026-11-21",
+  "regras": "Gabarito escrito antes de qualquer execução. Campos de pendência: solicitante_area, prazo_entrega, valor_unitario, fornecedor. Item é conferido pelas palavras-chave.",
+  "casos": [
+    {
+      "id": "C01",
+      "grupo": "completo",
+      "texto": "Oi, aqui é do Almoxarifado. Preciso de 40 caixas de luvas de procedimento, R$ 38,90 cada, fornecedor Distribuidora Aurora. Entrega até 15/02/2027. Valeu!",
+      "esperado": {
+        "solicitante_area": "Almoxarifado",
+        "item": "luvas de procedimento",
+        "quantidade": 40,
+        "unidade": "cx",
+        "prazo_entrega": "2027-02-15",
+        "valor_unitario": 38.9,
+        "moeda": "BRL",
+        "fornecedor": "Distribuidora Aurora"
+      },
+      "item_palavras_chave": [
+        "luvas",
+        "procedimento"
+      ],
+      "status_esperado": "completo",
+      "faltantes_esperados": [],
+      "observacao": ""
+    },
+    {
+      "id": "C02",
+      "grupo": "completo",
+      "texto": "Manutenção pede 12 metros de cabo flexível 2,5 mm. Orçamento total de R$ 300,00 com a Eletro Norte, necessário até 10/03/2027.",
+      "esperado": {
+        "solicitante_area": "Manutenção",
+        "item": "cabo flexível 2,5 mm",
+        "quantidade": 12,
+        "unidade": "m",
+        "prazo_entrega": "2027-03-10",
+        "valor_unitario": 25,
+        "moeda": "BRL",
+        "fornecedor": "Eletro Norte"
+      },
+      "item_palavras_chave": [
+        "cabo",
+        "flexível"
+      ],
+      "status_esperado": "completo",
+      "faltantes_esperados": [],
+      "observacao": "só o total no texto: 300 / 12 = 25"
+    },
+    {
+      "id": "C03",
+      "grupo": "completo",
+      "texto": "Pedido da TI: 8 unidades de SSD NVMe 1TB a US$ 89,50 cada, fornecedor TechSul Importações, prazo 20/01/2027.",
+      "esperado": {
+        "solicitante_area": "TI",
+        "item": "SSD NVMe 1TB",
+        "quantidade": 8,
+        "unidade": "un",
+        "prazo_entrega": "2027-01-20",
+        "valor_unitario": 89.5,
+        "moeda": "USD",
+        "fornecedor": "TechSul Importações"
+      },
+      "item_palavras_chave": [
+        "ssd",
+        "nvme"
+      ],
+      "status_esperado": "completo",
+      "faltantes_esperados": [],
+      "observacao": ""
+    },
+    {
+      "id": "C04",
+      "grupo": "completo",
+      "texto": "Engenharia de Processos solicita 2 un de sensor de pressão industrial, € 1.250,00 por unidade, da Weber Sensorik GmbH. Prazo final 30/04/2027.",
+      "esperado": {
+        "solicitante_area": "Engenharia de Processos",
+        "item": "sensor de pressão industrial",
+        "quantidade": 2,
+        "unidade": "un",
+        "prazo_entrega": "2027-04-30",
+        "valor_unitario": 1250,
+        "moeda": "EUR",
+        "fornecedor": "Weber Sensorik GmbH"
+      },
+      "item_palavras_chave": [
+        "sensor",
+        "pressão"
+      ],
+      "status_esperado": "completo",
+      "faltantes_esperados": [],
+      "observacao": "separador de milhar brasileiro"
+    },
+    {
+      "id": "C05",
+      "grupo": "completo",
+      "texto": "Qualidade aqui. Temos 15 litros em estoque, mas precisamos comprar 60 litros de álcool isopropílico a R$ 14,20 o litro. Fornecedor: Química Vale. Data limite 12/02/2027.",
+      "esperado": {
+        "solicitante_area": "Qualidade",
+        "item": "álcool isopropílico",
+        "quantidade": 60,
+        "unidade": "l",
+        "prazo_entrega": "2027-02-12",
+        "valor_unitario": 14.2,
+        "moeda": "BRL",
+        "fornecedor": "Química Vale"
+      },
+      "item_palavras_chave": [
+        "álcool",
+        "isopropílico"
+      ],
+      "status_esperado": "completo",
+      "faltantes_esperados": [],
+      "observacao": "ruído: quantidade em estoque (15) deve ser ignorada"
+    },
+    {
+      "id": "C06",
+      "grupo": "completo",
+      "texto": "RH pediu 50 un de canecas personalizadas, R$ 18,00 a unidade, fornecedor Brindes Tio Beto, prazo 01/03/2027.",
+      "esperado": {
+        "solicitante_area": "RH",
+        "item": "canecas personalizadas",
+        "quantidade": 50,
+        "unidade": "un",
+        "prazo_entrega": "2027-03-01",
+        "valor_unitario": 18,
+        "moeda": "BRL",
+        "fornecedor": "Brindes Tio Beto"
+      },
+      "item_palavras_chave": [
+        "canecas"
+      ],
+      "status_esperado": "completo",
+      "faltantes_esperados": [],
+      "observacao": "nome de fornecedor informal, copiar como aparece"
+    },
+    {
+      "id": "C07",
+      "grupo": "completo",
+      "texto": "Ola time, comprass pf: Facilities, 6 cx de papel sulfite A4, total de US$ 210,00 (Papelaria Central), ate 25/01/2027. Att, Marina",
+      "esperado": {
+        "solicitante_area": "Facilities",
+        "item": "papel sulfite A4",
+        "quantidade": 6,
+        "unidade": "cx",
+        "prazo_entrega": "2027-01-25",
+        "valor_unitario": 35,
+        "moeda": "USD",
+        "fornecedor": "Papelaria Central"
+      },
+      "item_palavras_chave": [
+        "papel",
+        "sulfite"
+      ],
+      "status_esperado": "completo",
+      "faltantes_esperados": [],
+      "observacao": "erros de digitação, assinatura e total em dólar: 210 / 6 = 35"
+    },
+    {
+      "id": "C08",
+      "grupo": "completo",
+      "texto": "Segurança do Trabalho: 150 m de fita antiderrapante, R$ 7,80 o metro, fornecedor SafeGrip, entrega até 18/02/2027.",
+      "esperado": {
+        "solicitante_area": "Segurança do Trabalho",
+        "item": "fita antiderrapante",
+        "quantidade": 150,
+        "unidade": "m",
+        "prazo_entrega": "2027-02-18",
+        "valor_unitario": 7.8,
+        "moeda": "BRL",
+        "fornecedor": "SafeGrip"
+      },
+      "item_palavras_chave": [
+        "fita",
+        "antiderrapante"
+      ],
+      "status_esperado": "completo",
+      "faltantes_esperados": [],
+      "observacao": ""
+    },
+    {
+      "id": "C09",
+      "grupo": "completo",
+      "texto": "Produção - 3 un de rolamento 6205, preço R$ 1.480,00 cada, Rolamentos Brasil, até 09/04/2027.",
+      "esperado": {
+        "solicitante_area": "Produção",
+        "item": "rolamento 6205",
+        "quantidade": 3,
+        "unidade": "un",
+        "prazo_entrega": "2027-04-09",
+        "valor_unitario": 1480,
+        "moeda": "BRL",
+        "fornecedor": "Rolamentos Brasil"
+      },
+      "item_palavras_chave": [
+        "rolamento",
+        "6205"
+      ],
+      "status_esperado": "completo",
+      "faltantes_esperados": [],
+      "observacao": "separador de milhar brasileiro"
+    },
+    {
+      "id": "C10",
+      "grupo": "completo",
+      "texto": "Financeiro precisa de 5 cx de grampos para grampeador, R$ 9,90 cada caixa, da Office Prime, entrega até 22/01/2027.",
+      "esperado": {
+        "solicitante_area": "Financeiro",
+        "item": "grampos para grampeador",
+        "quantidade": 5,
+        "unidade": "cx",
+        "prazo_entrega": "2027-01-22",
+        "valor_unitario": 9.9,
+        "moeda": "BRL",
+        "fornecedor": "Office Prime"
+      },
+      "item_palavras_chave": [
+        "grampos"
+      ],
+      "status_esperado": "completo",
+      "faltantes_esperados": [],
+      "observacao": ""
+    },
+    {
+      "id": "I01",
+      "grupo": "incompleto",
+      "texto": "Almoxarifado: 18 l de desengraxante industrial até 28/01/2027.",
+      "esperado": {
+        "solicitante_area": "Almoxarifado",
+        "item": "desengraxante industrial",
+        "quantidade": 18,
+        "unidade": "l",
+        "prazo_entrega": "2027-01-28",
+        "valor_unitario": null,
+        "moeda": null,
+        "fornecedor": null
+      },
+      "item_palavras_chave": [
+        "desengraxante"
+      ],
+      "status_esperado": "pendente",
+      "faltantes_esperados": [
+        "valor_unitario",
+        "fornecedor"
+      ],
+      "observacao": "faltam valor e fornecedor"
+    },
+    {
+      "id": "I02",
+      "grupo": "incompleto",
+      "texto": "Preciso de 10 un de lâmpadas LED 18W a R$ 12,00 cada, da Luminar, entrega até 14/02/2027.",
+      "esperado": {
+        "solicitante_area": null,
+        "item": "lâmpadas LED 18W",
+        "quantidade": 10,
+        "unidade": "un",
+        "prazo_entrega": "2027-02-14",
+        "valor_unitario": 12,
+        "moeda": "BRL",
+        "fornecedor": "Luminar"
+      },
+      "item_palavras_chave": [
+        "lâmpadas",
+        "led"
+      ],
+      "status_esperado": "pendente",
+      "faltantes_esperados": [
+        "solicitante_area"
+      ],
+      "observacao": "falta só a área"
+    },
+    {
+      "id": "I03",
+      "grupo": "incompleto",
+      "texto": "Manutenção quer 4 un de válvula esfera de meia polegada, R$ 95,00 cada, fornecedor Hidrofluxo. Entrega daqui 15 dias.",
+      "esperado": {
+        "solicitante_area": "Manutenção",
+        "item": "válvula esfera de meia polegada",
+        "quantidade": 4,
+        "unidade": "un",
+        "prazo_entrega": null,
+        "valor_unitario": 95,
+        "moeda": "BRL",
+        "fornecedor": "Hidrofluxo"
+      },
+      "item_palavras_chave": [
+        "válvula",
+        "esfera"
+      ],
+      "status_esperado": "pendente",
+      "faltantes_esperados": [
+        "prazo_entrega"
+      ],
+      "observacao": "prazo relativo vira null"
+    },
+    {
+      "id": "I04",
+      "grupo": "incompleto",
+      "texto": "Qualidade: 12 un de paquímetro digital, R$ 210,00 cada, entrega na semana que vem.",
+      "esperado": {
+        "solicitante_area": "Qualidade",
+        "item": "paquímetro digital",
+        "quantidade": 12,
+        "unidade": "un",
+        "prazo_entrega": null,
+        "valor_unitario": 210,
+        "moeda": "BRL",
+        "fornecedor": null
+      },
+      "item_palavras_chave": [
+        "paquímetro"
+      ],
+      "status_esperado": "pendente",
+      "faltantes_esperados": [
+        "prazo_entrega",
+        "fornecedor"
+      ],
+      "observacao": "prazo relativo e sem fornecedor"
+    },
+    {
+      "id": "I05",
+      "grupo": "incompleto",
+      "texto": "TI pede 3 un de switch 24 portas, total de R$ 2.700,00, fornecedor NetPlus.",
+      "esperado": {
+        "solicitante_area": "TI",
+        "item": "switch 24 portas",
+        "quantidade": 3,
+        "unidade": "un",
+        "prazo_entrega": null,
+        "valor_unitario": 900,
+        "moeda": "BRL",
+        "fornecedor": "NetPlus"
+      },
+      "item_palavras_chave": [
+        "switch",
+        "portas"
+      ],
+      "status_esperado": "pendente",
+      "faltantes_esperados": [
+        "prazo_entrega"
+      ],
+      "observacao": "total no texto: 2700 / 3 = 900; sem prazo"
+    },
+    {
+      "id": "I06",
+      "grupo": "incompleto",
+      "texto": "Preciso de 7 cx de fita adesiva.",
+      "esperado": {
+        "solicitante_area": null,
+        "item": "fita adesiva",
+        "quantidade": 7,
+        "unidade": "cx",
+        "prazo_entrega": null,
+        "valor_unitario": null,
+        "moeda": null,
+        "fornecedor": null
+      },
+      "item_palavras_chave": [
+        "fita",
+        "adesiva"
+      ],
+      "status_esperado": "pendente",
+      "faltantes_esperados": [
+        "solicitante_area",
+        "prazo_entrega",
+        "valor_unitario",
+        "fornecedor"
+      ],
+      "observacao": "só item e quantidade"
+    },
+    {
+      "id": "I07",
+      "grupo": "incompleto",
+      "texto": "Entrega até 03/03/2027, fornecedor Parafusos & Cia: 500 un de parafuso sextavado M8.",
+      "esperado": {
+        "solicitante_area": null,
+        "item": "parafuso sextavado M8",
+        "quantidade": 500,
+        "unidade": "un",
+        "prazo_entrega": "2027-03-03",
+        "valor_unitario": null,
+        "moeda": null,
+        "fornecedor": "Parafusos & Cia"
+      },
+      "item_palavras_chave": [
+        "parafuso",
+        "sextavado"
+      ],
+      "status_esperado": "pendente",
+      "faltantes_esperados": [
+        "solicitante_area",
+        "valor_unitario"
+      ],
+      "observacao": "faltam área e valor"
+    },
+    {
+      "id": "I08",
+      "grupo": "incompleto",
+      "texto": "Engenharia: 9 m de mangueira hidráulica, US$ 15,00 por metro, entregar até 11/02/2027.",
+      "esperado": {
+        "solicitante_area": "Engenharia",
+        "item": "mangueira hidráulica",
+        "quantidade": 9,
+        "unidade": "m",
+        "prazo_entrega": "2027-02-11",
+        "valor_unitario": 15,
+        "moeda": "USD",
+        "fornecedor": null
+      },
+      "item_palavras_chave": [
+        "mangueira",
+        "hidráulica"
+      ],
+      "status_esperado": "pendente",
+      "faltantes_esperados": [
+        "fornecedor"
+      ],
+      "observacao": "falta só o fornecedor"
+    },
+    {
+      "id": "I09",
+      "grupo": "incompleto",
+      "texto": "Produção solicita 35 kg de graxa para rolamentos, fornecedor LubriMax, sem data definida ainda.",
+      "esperado": {
+        "solicitante_area": "Produção",
+        "item": "graxa para rolamentos",
+        "quantidade": 35,
+        "unidade": "kg",
+        "prazo_entrega": null,
+        "valor_unitario": null,
+        "moeda": null,
+        "fornecedor": "LubriMax"
+      },
+      "item_palavras_chave": [
+        "graxa"
+      ],
+      "status_esperado": "pendente",
+      "faltantes_esperados": [
+        "prazo_entrega",
+        "valor_unitario"
+      ],
+      "observacao": "faltam prazo e valor"
+    },
+    {
+      "id": "I10",
+      "grupo": "incompleto",
+      "texto": "Facilities: 14 un de cadeira de escritório, R$ 540,00 cada, Móveis Horizonte, precisamos até dia 20/02.",
+      "esperado": {
+        "solicitante_area": "Facilities",
+        "item": "cadeira de escritório",
+        "quantidade": 14,
+        "unidade": "un",
+        "prazo_entrega": null,
+        "valor_unitario": 540,
+        "moeda": "BRL",
+        "fornecedor": "Móveis Horizonte"
+      },
+      "item_palavras_chave": [
+        "cadeira"
+      ],
+      "status_esperado": "pendente",
+      "faltantes_esperados": [
+        "prazo_entrega"
+      ],
+      "observacao": "data sem ano vira null"
+    }
+  ]
+}
