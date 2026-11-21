@@ -6,7 +6,7 @@ O n8n recebe o pedido, chama a API e decide o próximo passo pelo campo `status`
 1. **Gatilho:** Gmail Trigger (rótulo `pedidos-compra`) ou n8n Form com um campo de texto.
 2. **HTTP Request**
    - Método: `POST`
-   - URL: `https://SEU-PROJETO.vercel.app/api/v1/processar`
+   - URL: `https://api-pedidos-mu.vercel.app/api/v1/processar`
    - Autenticação: *Generic Credential Type → Header Auth*, nome `x-api-key`, valor = segredo da chave `n8n` de `API_KEYS`
    - Cabeçalho extra: `x-id-pedido` = id da mensagem (evita custo dobrado se o n8n reenviar)
    - Corpo (JSON): `{ "texto": "{{ $json.text }}" }` (ajuste para o campo do gatilho)

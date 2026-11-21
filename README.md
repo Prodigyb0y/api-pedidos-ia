@@ -7,7 +7,7 @@
 ![Console de teste da API](docs/img/console.png)
 <sub>Captura feita localmente, com o modelo substituído por uma resposta de teste. Os números reais de custo e latência estão em [Resultados](#resultados).</sub>
 
-- **Demo:** `https://SEU-PROJETO.vercel.app` (atualizar depois do primeiro deploy)
+- **Demo:** `https://api-pedidos-mu.vercel.app`
 - **Especificação OpenAPI:** `/api/openapi.json`
 
 ## Por que isso importa para um time de negócio
@@ -29,7 +29,7 @@ Campos que o e-mail sabe pedir: área solicitante, prazo de entrega, valor unit�
 
 ### Exemplo
 ```bash
-curl -X POST https://SEU-PROJETO.vercel.app/api/v1/processar \
+curl -X POST https://api-pedidos-mu.vercel.app/api/v1/processar \
   -H "content-type: application/json" \
   -H "x-api-key: SUA_CHAVE" \
   -H "x-id-pedido: msg-123" \
