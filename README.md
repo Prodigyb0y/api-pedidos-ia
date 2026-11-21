@@ -73,7 +73,7 @@ Medidos em 21/11/2026 com 20 pedidos fictícios e gabarito escrito antes, enviad
 | Tempo de execução no n8n (mediana) | 2,03 s |
 | Custo por pedido (média) | US$ 0,000218 |
 
-Amostra pequena, uma rodada, casos escritos por assistente de IA e revisados pelo autor: não prova acerto geral. **Comparação com o processo manual: medição pendente.**
+Amostra pequena, uma rodada, casos escritos por assistente de IA e revisados pelo autor: não prova acerto geral. **Comparação com o processo manual** (5 pedidos cronometrados à mão pelo autor): média de 119 s por pedido à mão, contra mediana de 2,03 s de execução da API no n8n. À mão, 38 de 40 campos corretos nesses 5 pedidos. Amostra pequena e autor conhece as regras; a conferência humana dos pedidos pendentes não foi cronometrada. Detalhes em [`docs/resultados_medicao.md`](docs/resultados_medicao.md).
 
 ## Como rodar
 **Na Vercel (recomendado):** importe o repositório em vercel.com → Add New → Project, cadastre as variáveis abaixo (Production e Preview) e publique. Cada push em `main` publica de novo.

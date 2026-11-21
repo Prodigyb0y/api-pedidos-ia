@@ -28,4 +28,19 @@ Medição da API dentro do fluxo real do n8n, seguindo `docs/medicao.md`. Dados,
 - Estes números são **da API no fluxo**. Os números do Prompt Lab (extração e e-mail) são do laboratório e não entram aqui.
 
 ## Comparação com o processo manual
-**Pendente.** Falta cronometrar 5 vezes o processo à mão (ler o pedido, preencher a planilha, escrever o e-mail). Modelo em `medicao/cronometragem_manual.csv`. Sem esses tempos, não há afirmação de tempo economizado.
+Autor, 21/11/2026, cronômetro no celular, 5 pedidos do mesmo conjunto (C02, C07, I01, I04, I06), na ordem do protocolo (`medicao/cronometragem_manual.csv`). Cada tempo vai da leitura do pedido até a linha preenchida na planilha e, nos pendentes, o e-mail pronto para enviar.
+
+| Pedido | Tipo | Manual (s) |
+|---|---|---|
+| C02 | completo | 61 |
+| C07 | completo | 55 |
+| I01 | pendente | 150 |
+| I04 | pendente | 170 |
+| I06 | pendente | 160 |
+
+- **Manual:** média de 119 s por pedido (mediana 150 s); completos ≈ 58 s e pendentes ≈ 160 s.
+- **API no fluxo (execução no n8n):** mediana de 2,03 s; completos 1,31 s e pendentes 2,75 s.
+- **Acerto manual nesses 5 pedidos:** 38 de 40 campos. Erros: prazo de I01 (25/01/2027, o correto era 28/01/2027) e unidade de I04 (`um`, o correto era `un`). Datas foram anotadas como DD/MM/AAAA e não como AAAA-MM-DD; tratei como o mesmo conteúdo. O acerto dos e-mails escritos à mão não foi conferido.
+- **Estimativa, não medição:** com esses tempos, 10 pedidos completos e 10 pendentes levariam cerca de 36 minutos à mão (10 × 58 s + 10 × 160 s) contra cerca de 40 s de execução da API (soma das 20 execuções). A estimativa extrapola 5 amostras.
+
+**Limitações da comparação:** 5 amostras e uma única pessoa, que é o autor do projeto e conhece as regras e os textos, o que tende a favorecer o manual. Os dois tempos não medem a mesma coisa: o da API é tempo de máquina no n8n; o manual inclui a leitura e a digitação. No uso real ainda existe a conferência humana dos pedidos pendentes e dos campos vazios, que não foi cronometrada.

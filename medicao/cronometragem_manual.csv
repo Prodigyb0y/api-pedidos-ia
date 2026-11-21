@@ -1,6 +1,6 @@
 caso,segundos,observacao
-C02,,
-C07,,
-I01,,
-I04,,
-I06,,
+C02,61,
+C07,55,
+I01,150,prazo preenchido como 25/01/2027; gabarito 28/01/2027
+I04,170,unidade preenchida como "um"; esperado "un"
+I06,160,
