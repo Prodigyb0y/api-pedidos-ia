@@ -39,7 +39,8 @@ Autor, 21/11/2026, cronômetro no celular, 5 pedidos do mesmo conjunto (C02, C07
 | I06 | pendente | 160 |
 
 - **Manual:** média de 119 s por pedido (mediana 150 s); completos ≈ 58 s e pendentes ≈ 160 s.
-- **API no fluxo (execução no n8n):** mediana de 2,03 s; completos 1,31 s e pendentes 2,75 s.
+- **API no fluxo, 20 pedidos (execução no n8n):** mediana de 2,03 s; completos 1,31 s e pendentes 2,75 s.
+- **API nos mesmos 5 pedidos (C02, C07, I01, I04, I06):** 40 de 40 campos, status 5 de 5 e e-mails 3 de 3 corretos; tempo de execução no n8n com média de 2,29 s (mediana 2,56 s) e custo médio de US$ 0,000241 por pedido. Calculado com o mesmo pontuador (`node medicao/pontuar.mjs --casos=C02,C07,I01,I04,I06`, saída em `medicao/resultados_calculados_comparacao_manual.json`). **É esta a comparação de acerto e tempo que vale contra o manual**, porque usa os mesmos pedidos: manual 38 de 40 campos e 119 s em média; API 40 de 40 campos e 2,29 s em média.
 - **Acerto manual nesses 5 pedidos:** 38 de 40 campos. Erros: prazo de I01 (25/01/2027, o correto era 28/01/2027) e unidade de I04 (`um`, o correto era `un`). Datas foram anotadas como DD/MM/AAAA e não como AAAA-MM-DD; tratei como o mesmo conteúdo. O acerto dos e-mails escritos à mão não foi conferido.
 - **Estimativa, não medição:** com esses tempos, 10 pedidos completos e 10 pendentes levariam cerca de 36 minutos à mão (10 × 58 s + 10 × 160 s) contra cerca de 40 s de execução da API (soma das 20 execuções). A estimativa extrapola 5 amostras.
 

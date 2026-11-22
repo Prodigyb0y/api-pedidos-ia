@@ -4,6 +4,9 @@ import { createHash } from "node:crypto";
 const dir = new URL(".", import.meta.url);
 const lerBytes = (n) => readFileSync(new URL(n, dir));
 const gab = JSON.parse(lerBytes("casos.json").toString("utf8"));
+// Uso opcional: node medicao/pontuar.mjs --casos=C02,C07 pontua só esses casos e grava em outro arquivo.
+const filtro = (process.argv.find((x) => x.startsWith("--casos=")) || "").slice(8).split(",").filter(Boolean);
+if (filtro.length) gab.casos = gab.casos.filter((c) => filtro.includes(c.id));
 const res = JSON.parse(lerBytes("resultados_brutos.json").toString("utf8"));
 const norm = (s) => String(s ?? "").normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().trim();
 const vazio = (x) => x === null || x === undefined || x === "";
@@ -58,5 +61,5 @@ const resumo = {
   custo_usd: { total: +custos.reduce((a, b) => a + b, 0).toFixed(6), medio: +media(custos).toFixed(6), mediana: +mediana(custos).toFixed(6), max: Math.max(...custos) },
   divergencias: erros, por_caso: linhas,
 };
-writeFileSync(new URL("resultados_calculados.json", dir), JSON.stringify(resumo, null, 2) + "\n");
+writeFileSync(new URL(filtro.length ? "resultados_calculados_comparacao_manual.json" : "resultados_calculados.json", dir), JSON.stringify(resumo, null, 2) + "\n");
 console.log(JSON.stringify({ ...resumo, por_caso: undefined }, null, 2));

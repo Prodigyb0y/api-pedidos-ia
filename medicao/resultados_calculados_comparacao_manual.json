@@ -1,0 +1,86 @@
+{
+  "data": "2026-11-21",
+  "n_casos": 5,
+  "sha256_casos": "f6562ee46373a183e0a0051d225391358982ee64d3fcd65046b54d839294e7ec",
+  "campos": {
+    "certos": 40,
+    "total": 40
+  },
+  "status": {
+    "certos": 5,
+    "total": 5
+  },
+  "faltantes": {
+    "certos": 5,
+    "total": 5
+  },
+  "emails_citam_exatamente_os_faltantes": {
+    "certos": 3,
+    "total": 3
+  },
+  "completos_sem_email": {
+    "certos": 2,
+    "total": 2
+  },
+  "tempo_execucao_n8n_s": {
+    "mediana": 2.56,
+    "media": 2.29,
+    "max": 3.09,
+    "mediana_completos": 1.58,
+    "mediana_pendentes": 2.67
+  },
+  "custo_usd": {
+    "total": 0.001207,
+    "medio": 0.000241,
+    "mediana": 0.000259,
+    "max": 0.000318
+  },
+  "divergencias": [],
+  "por_caso": [
+    {
+      "id": "C02",
+      "campos_certos": 8,
+      "status_ok": true,
+      "faltantes_ok": true,
+      "email_ok": null,
+      "tempo_s": 1.598,
+      "custo_usd": 0.000183
+    },
+    {
+      "id": "C07",
+      "campos_certos": 8,
+      "status_ok": true,
+      "faltantes_ok": true,
+      "email_ok": null,
+      "tempo_s": 1.554,
+      "custo_usd": 0.00018
+    },
+    {
+      "id": "I01",
+      "campos_certos": 8,
+      "status_ok": true,
+      "faltantes_ok": true,
+      "email_ok": true,
+      "tempo_s": 3.087,
+      "custo_usd": 0.000318
+    },
+    {
+      "id": "I04",
+      "campos_certos": 8,
+      "status_ok": true,
+      "faltantes_ok": true,
+      "email_ok": true,
+      "tempo_s": 2.564,
+      "custo_usd": 0.000259
+    },
+    {
+      "id": "I06",
+      "campos_certos": 8,
+      "status_ok": true,
+      "faltantes_ok": true,
+      "email_ok": true,
+      "tempo_s": 2.666,
+      "custo_usd": 0.000267
+    }
+  ]
+}

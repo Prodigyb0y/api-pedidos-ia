@@ -34,7 +34,7 @@ Medidos em 21/11/2026 com 20 pedidos fictícios (10 completos e 10 incompletos),
 | Tempo de execução no n8n (mediana) | 2,03 s |
 | Custo por pedido (média) | US$ 0,000218 |
 
-**Comparação com o processo manual:** 5 pedidos cronometrados à mão pelo autor levaram em média 119 s cada, com 38 de 40 campos corretos. Os dois tempos não medem a mesma coisa (o da API é tempo de máquina no n8n; o manual inclui leitura e digitação), e a conferência humana dos pedidos pendentes não foi cronometrada.
+**Comparação com o processo manual (mesmos 5 pedidos):** o autor cronometrou à mão os pedidos C02, C07, I01, I04 e I06: média de 119 s por pedido e 38 de 40 campos corretos. Nesses mesmos 5 pedidos, a API acertou 40 de 40 campos e levou em média 2,29 s de execução no n8n (calculado com o mesmo pontuador). Os dois tempos não medem a mesma coisa (o da API é tempo de máquina no n8n; o manual inclui leitura e digitação), e a conferência humana dos pedidos pendentes não foi cronometrada. Os 160 de 160 da tabela acima valem para os 20 pedidos e não devem ser lidos contra os 38 de 40 do manual.
 
 **Como ler estes números:** amostra pequena, uma rodada, casos escritos por um assistente de IA e revisados pelo autor. Não provam acerto geral. Os números do [Prompt Lab](https://github.com/Prodigyb0y/prompt-lab) são do laboratório, não desta API.
 
@@ -146,6 +146,8 @@ docs/              n8n, plano e resultados da medição, registro de como foi co
 ## Limitações
 - Dados e pedidos fictícios; um único modelo; prompts medidos em casos gerados pelo autor do Prompt Lab.
 - A medição tem 20 pedidos e uma rodada; a comparação manual tem 5 cronometragens, feitas pelo autor.
+- A rota `GET /api/v1/uso` conta como erro toda resposta diferente de 200, inclusive chave ausente ou errada (401/403), pedido sem item (422) e limites (429/503); ela não mostra o código. O erro registrado em 22/11/2026 (1 em 31 chamadas) coincide com um teste de chave antiga feito pelo autor, mas isso não pode ser confirmado pelo endpoint. Detalhes em [`docs/uso_e_custo.md`](docs/uso_e_custo.md).
+- `gasto_do_mes_usd` (contador do teto) e `mes.custo_usd` (soma do log) diferem em frações de centavo por construção; explicação em [`docs/uso_e_custo.md`](docs/uso_e_custo.md).
 - Sem a integração de Redis, limites e teto valem por instância, não para a API inteira.
 - O e-mail pede só quatro campos (área, prazo, valor com moeda e fornecedor); unidade e moeda sozinhas não geram pedido de informação.
 - A conferência do e-mail é por nome exato do campo: um e-mail correto escrito com outro nome seria recusado.
