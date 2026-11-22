@@ -30,3 +30,4 @@ O fluxo está em `n8n/fluxo_pedidos.json` (importe em Workflows → Import from 
 - **Ainda não tratado:** e-mail de resposta para `pedido_sem_item` e aviso a Compras quando o pedido está completo.
 - **Credenciais (não vão no arquivo):** Header Auth com nome `x-api-key` e o segredo da chave `n8n`; conta Gmail por OAuth.
 - **Teste feito em 21/11/2026:** pedido do detergente gerou `pendente`, e-mail citando `valor_unitario` e `fornecedor`, uma linha na tabela e custo de cerca de US$ 0,00027. É um teste isolado, não a medição (ver `docs/medicao.md`).
+- **Publicação:** o formulário de produção foi despublicado em 22/11/2026, porque qualquer visitante poderia digitar um e-mail e fazer o fluxo enviar mensagem pela conta do Gmail do autor. O fluxo continua salvo e pode ser republicado para uma demonstração ao vivo.

@@ -1,10 +1,25 @@
 {
-  "name": "api-pedidos",
+  "name": "api-pedidos-ia",
   "version": "1.0.0",
   "private": true,
   "description": "API de Pedidos · Gutenberg Systems: pedido de compra em texto livre vira JSON e e-mail de pendências. Dados fictícios.",
+  "homepage": "https://api-pedidos-portal.vercel.app",
+  "keywords": [
+    "llm",
+    "anthropic",
+    "claude",
+    "n8n",
+    "automacao",
+    "api",
+    "serverless",
+    "vercel",
+    "openapi",
+    "portfolio"
+  ],
   "type": "module",
-  "engines": { "node": "22.x" },
+  "engines": {
+    "node": "22.x"
+  },
   "scripts": {
     "test": "node --test test/*.test.js",
     "prompts": "node scripts/gerar_prompts.mjs"
