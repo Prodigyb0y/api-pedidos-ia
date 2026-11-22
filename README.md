@@ -5,9 +5,10 @@
 > Recriação conceitual com **empresa, pessoas e pedidos 100% fictícios** (Gutenberg Systems). Nenhum dado, nome ou sistema de empresa real.
 
 ![Console de teste da API](docs/img/console.png)
-<sub>Captura feita localmente, com o modelo substituído por uma resposta de teste. Os números reais de custo e latência estão em [Resultados](#resultados).</sub>
+<sub>Captura do Console publicado no portal, em 22/11/2026, com um pedido fictício processado de verdade (custo e tempo do modelo no topo do resultado). Foi tirada antes do ajuste que formata valor e data na aba Campos, por isso aparecem como `18.5` e `2026-12-15`; hoje o portal mostra `R$ 18,50` e `15/12/2026`. Os números medidos em 20 pedidos estão em [Resultados](#resultados).</sub>
 
 - **Demo:** `https://api-pedidos-mu.vercel.app`
+- **Portal público (interface feita no v0, app separado):** `https://api-pedidos-portal.vercel.app`: Console de teste, Uso, Documentação e Como integra. O segredo da demo fica só no servidor do portal.
 - **Especificação OpenAPI:** `/api/openapi.json`
 
 ## Por que isso importa para um time de negócio
@@ -109,6 +110,8 @@ docs/              n8n, medição e registro de como foi construído
 - Sem a integração de Redis, limites e teto valem por instância, não para a API inteira.
 - O e-mail pede só quatro campos (área, prazo, valor com moeda e fornecedor); unidade e moeda sozinhas não geram pedido de informação.
 - A conferência do e-mail é por nome exato do campo: um e-mail correto escrito com outro nome seria recusado.
+- No fluxo do n8n, um texto que não é pedido (422) é registrado, mas o solicitante não recebe resposta; e pedido completo não gera aviso para Compras (detalhes em [`docs/n8n.md`](docs/n8n.md)).
+- A comparação com o processo manual tem apenas 5 cronometragens, feitas pelo autor.
 
 ## Como foi construído
-Código escrito com assistente de código de IA (Claude), a partir do desenho e das regras definidos pelo autor; a primeira versão da base foi tentada no v0, que ficou para a camada de interface. Registro em [`docs/vibe_coding.md`](docs/vibe_coding.md).
+Código escrito com assistente de código de IA (Claude), a partir do desenho e das regras definidos pelo autor; a primeira versão da base foi tentada no v0, que acabou sendo usado para a camada de interface: o portal público foi gerado no v0, em um app separado que consome esta API, em três etapas com plano aprovado antes de cada código. O fluxo do n8n foi montado por um assistente de IA (Claude), pelas ferramentas do n8n, a partir do desenho do autor, e testado e publicado por ele. Registro de cada etapa, com o que foi verificado e o que não foi, em [`docs/vibe_coding.md`](docs/vibe_coding.md).
