@@ -9,8 +9,18 @@
 ![Console de teste da API](docs/img/console.png)
 <sub>Captura do Console publicado no portal, em 22/11/2026, com um pedido fictício processado de verdade (custo e tempo do modelo no topo do resultado). Foi tirada antes do ajuste que formata valor e data na aba Campos, por isso aparecem como `18.5` e `2026-12-15`; hoje o portal mostra `R$ 18,50` e `15/12/2026`.</sub>
 
+## Em 30 segundos
+| | |
+|---|---|
+| **O que faz** | Recebe um pedido de compra em texto livre e devolve 8 campos estruturados, a lista do que falta e o e-mail pedindo só o que faltou. |
+| **Para quem** | Times de compras que hoje redigitam pedidos e escrevem e-mails de cobrança de informação à mão. |
+| **Teste agora** | [Console do portal](https://api-pedidos-portal.vercel.app/console): 4 exemplos prontos, sem instalar nada e sem chave. |
+| **Resultado medido** | Em 20 pedidos fictícios: 160 de 160 campos, 20 de 20 status e 10 de 10 e-mails corretos; mediana de 2,03 s e custo médio de US$ 0,000218 por pedido. Amostra pequena e uma rodada: [método e limites](docs/resultados_medicao.md). |
+| **Controles** | Saída validada em código (nunca inventa), teto de gasto mensal, limite diário, idempotência e 28 testes sem chamar o modelo. |
+| **Feito com** | API JavaScript na Vercel, modelo `claude-haiku-5-5`, n8n Cloud e um portal em Next.js gerado no v0. |
+
 ## Sumário
-[Mapa dos repositórios](#mapa-dos-repositórios) · [A dor que resolve](#a-dor-que-resolve) · [Como resolve](#como-resolve) · [Resultados](#resultados) · [Arquitetura](#arquitetura) · [Tecnologias](#tecnologias) · [Decisões de projeto](#decisões-de-projeto) · [API](#api) · [Como rodar](#como-rodar) · [Estrutura](#estrutura-do-repositório) · [Limitações](#limitações) · [Como foi construído](#como-foi-construído)
+[Em 30 segundos](#em-30-segundos) · [Mapa dos repositórios](#mapa-dos-repositórios) · [A dor que resolve](#a-dor-que-resolve) · [Como resolve](#como-resolve) · [Resultados](#resultados) · [Arquitetura](#arquitetura) · [Tecnologias](#tecnologias) · [Decisões de projeto](#decisões-de-projeto) · [Glossário](#glossário-rápido) · [API](#api) · [Como rodar](#como-rodar) · [Estrutura](#estrutura-do-repositório) · [Limitações](#limitações) · [Próximos passos](#próximos-passos-não-feitos) · [Como foi construído](#como-foi-construído)
 
 ## Mapa dos repositórios
 O projeto tem dois repositórios que se complementam. **Este é o principal**: conta a história inteira (problema, resultados medidos, arquitetura e limitações).
@@ -49,6 +59,16 @@ Medidos em 21/11/2026 com 20 pedidos fictícios (10 completos e 10 incompletos),
 
 **Como ler estes números:** amostra pequena, uma rodada, casos escritos por um assistente de IA e revisados pelo autor. Não provam acerto geral. Os números do [Prompt Lab](https://github.com/Prodigyb0y/prompt-lab) são do laboratório, não desta API.
 
+## O que este projeto demonstra
+| Competência | Onde está a prova |
+|---|---|
+| **API leve** (expor, não só consumir) | 7 rotas com contrato [OpenAPI 3.1](https://api-pedidos-mu.vercel.app/api/openapi.json), autenticação por chave, limites e erros padronizados: seção [API](#api). |
+| **Automação no n8n integrando IA a sistemas externos** | Fluxo com formulário, chamada à API, tabela e Gmail: [`docs/n8n.md`](docs/n8n.md) e [`n8n/fluxo_pedidos.json`](n8n/fluxo_pedidos.json). |
+| **Prompt engineering em produção** | Prompts P1 v2 e P3 v2 versionados, conferidos por hash em teste e medidos no [Prompt Lab](https://github.com/Prodigyb0y/prompt-lab). |
+| **Vibe coding (v0) com IA** | Portal gerado no v0 em 3 etapas com plano aprovado: [código público](https://github.com/Prodigyb0y/api-pedidos-portal) e registro de cada prompt em [`docs/vibe_coding.md`](docs/vibe_coding.md). |
+| **Resultado de negócio mensurável** | Acerto, tempo e custo por pedido contra o processo manual, com gabarito congelado antes da execução: [`docs/resultados_medicao.md`](docs/resultados_medicao.md). |
+| **Responsabilidade com custo e dados** | Teto de gasto, log sem o texto do pedido, dados 100% fictícios e limitações descritas abaixo. |
+
 ## Arquitetura
 ```mermaid
 flowchart LR
@@ -84,6 +104,14 @@ flowchart LR
 - **Idempotência.** Com `x-id-pedido`, o mesmo pedido reenviado em 24 h devolve a resposta anterior sem novo custo.
 - **Segurança.** `x-api-key` comparada em tempo constante; segredos só em variáveis de ambiente; corpo limitado a 8 KB; log sem o texto do pedido e sem e-mail.
 - **Prompts sem alteração.** Copiados do Prompt Lab e conferidos por hash em teste. Mudar um prompt exige nova medição.
+
+## Glossário rápido
+- **API:** um serviço que outros programas chamam pela internet. Aqui, o n8n e o portal enviam o texto do pedido e recebem a resposta pronta.
+- **n8n:** ferramenta de automação visual. Liga o formulário de pedidos à API, grava o resultado em tabela e envia o e-mail.
+- **Teto de gasto:** limite mensal de custo com o modelo de IA, aplicado no código; passou do teto, a API para de chamar o modelo.
+- **Idempotência:** reenviar o mesmo pedido (mesmo `x-id-pedido`) em até 24 h devolve a resposta anterior, sem nova cobrança.
+- **Campo vazio, nunca inventado:** se o dado não está no texto, o campo volta `null` para uma pessoa conferir.
+- **Gabarito:** respostas corretas escritas antes de rodar a medição, para não ajustar a conta depois de ver o resultado.
 
 ## API
 | Rota | Chave | O que faz |
@@ -141,6 +169,22 @@ A redação muda um pouco a cada execução do modelo; o que o código garante �
 
 As rotas com chave exigem o cabeçalho `x-api-key`. Para testar sem chave, use o [portal](https://api-pedidos-portal.vercel.app/console).
 
+### Erros
+Toda falha volta como `{"erro":{"codigo":"...","mensagem":"..."}}`.
+
+| HTTP | `codigo` | Quando acontece |
+|---|---|---|
+| 400 | `entrada_invalida`, `json_invalido`, `id_pedido_invalido` | JSON malformado, campo `texto` ausente ou fora de 10 a 4.000 caracteres (1.000 na rota da demo), campo extra ou `x-id-pedido` inválido |
+| 401 | `chave_ausente` | Faltou o cabeçalho `x-api-key` |
+| 403 | `chave_invalida` | Chave não reconhecida |
+| 405 | `metodo_nao_permitido` | Método HTTP errado para a rota |
+| 413 / 415 | `corpo_grande_demais`, `tipo_invalido` | Corpo acima de 8 KB ou sem `content-type: application/json` |
+| 422 | `pedido_sem_item` | O texto não traz item e quantidade (não parece um pedido) |
+| 429 | `limite_diario` | Limite diário da chave atingido |
+| 502 | `saida_invalida`, `email_invalido`, `falha_provedor` | O modelo não devolveu JSON ou e-mail válidos após uma nova tentativa, ou o provedor falhou |
+| 503 | `teto_de_gasto`, `api_nao_configurada`, `provedor_nao_configurado` | Teto mensal atingido ou API sem chaves configuradas |
+| 500 | `erro_interno` | Falha inesperada |
+
 ## Como rodar
 **Na Vercel (recomendado):** importe o repositório em vercel.com → Add New → Project, cadastre as variáveis abaixo (Production e Preview) e publique. Cada push em `main` publica de novo.
 
@@ -186,6 +230,14 @@ docs/              n8n, plano e resultados da medição, registro de como foi co
 - A conferência do e-mail é por nome exato do campo: um e-mail correto escrito com outro nome seria recusado.
 - No fluxo do n8n, um texto que não é pedido (422) é registrado, mas o solicitante não recebe resposta; e pedido completo não gera aviso para Compras (detalhes em [`docs/n8n.md`](docs/n8n.md)).
 - Do portal, só foram verificados por inspeção e teclado: abas, link de salto, rótulos e `aria-live`. Não houve teste com leitor de tela, movimento reduzido nem a ordem completa do Tab.
+
+## Próximos passos (não feitos)
+Ideias que saem das limitações acima; **nenhuma está implementada**.
+- Mostrar os erros por código em `/api/v1/uso` (hoje só há a contagem total).
+- Responder ao solicitante quando o texto não é pedido (422) e avisar Compras quando o pedido vem completo.
+- Fazer o e-mail pedir também unidade e moeda quando faltarem.
+- Repetir a medição com mais pedidos, mais rodadas e casos escritos por outra pessoa.
+- Testar o portal com leitor de tela e conferir a ordem completa do Tab.
 
 ## Como foi construído
 Código da API escrito com um assistente de código de IA (Claude), a partir do desenho e das regras definidos pelo autor. A primeira tentativa de base no v0 foi abandonada; o v0 acabou sendo usado na camada de interface: o portal foi gerado nele, em um app separado que consome esta API, em três etapas com plano aprovado antes de cada código. O fluxo do n8n foi montado por um assistente de IA (Claude), pelas ferramentas do n8n, a partir do desenho do autor, e testado e publicado por ele. O registro de cada etapa, com o que foi verificado e o que não foi, está em [`docs/vibe_coding.md`](docs/vibe_coding.md).
