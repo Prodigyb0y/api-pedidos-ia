@@ -23,7 +23,7 @@
 | **Com IA (v0)** | Gerou o portal em 3 etapas, com plano aprovado antes de cada código. Registro completo em [`docs/vibe_coding.md`](docs/vibe_coding.md). |
 
 ## Sumário
-[Em 30 segundos](#em-30-segundos) · [Mapa dos repositórios](#mapa-dos-repositórios) · [A dor que resolve](#a-dor-que-resolve) · [Como resolve](#como-resolve) · [Resultados](#resultados) · [Arquitetura](#arquitetura) · [Tecnologias](#tecnologias) · [Decisões de projeto](#decisões-de-projeto) · [Glossário](#glossário-rápido) · [API](#api) · [Como rodar](#como-rodar) · [Estrutura](#estrutura-do-repositório) · [Limitações](#limitações) · [Próximos passos](#próximos-passos-não-feitos) · [Como foi construído](#como-foi-construído)
+[Em 30 segundos](#em-30-segundos) · [Mapa dos repositórios](#mapa-dos-repositórios) · [A dor que resolve](#a-dor-que-resolve) · [Como resolve](#como-resolve) · [Resultados](#resultados) · [Arquitetura](#arquitetura) · [Tecnologias](#tecnologias) · [Decisões de projeto](#decisões-de-projeto) · [Glossário](#glossário-rápido) · [API](#api) · [Como rodar](#como-rodar) · [Estrutura](#estrutura-do-repositório) · [Limitações](#limitações) · [Como foi construído](#como-foi-construído) · [Conclusão](#conclusão)
 
 ## Mapa dos repositórios
 O projeto tem dois repositórios que se complementam. **Este é o principal**: conta a história inteira (problema, resultados medidos, arquitetura e limitações).
@@ -220,7 +220,7 @@ public/            página de demonstração da própria API
 test/              testes com node:test
 n8n/               fluxo exportado, sem credenciais
 medicao/           gabarito dos 20 pedidos, resultados e script de pontuação
-docs/              n8n, plano e resultados da medição, registro de como foi construído
+docs/              n8n, método e resultados da medição, registro de como foi construído
 ```
 
 ## Limitações
@@ -234,13 +234,17 @@ docs/              n8n, plano e resultados da medição, registro de como foi co
 - No fluxo do n8n, um texto que não é pedido (422) é registrado com o status `pedido_sem_item` (confirmado em execução manual do n8n em 22/11/2026), mas o solicitante não recebe resposta; e pedido completo não gera aviso para Compras (detalhes em [`docs/n8n.md`](docs/n8n.md)).
 - Do portal, só foram verificados por inspeção e teclado: abas, link de salto, rótulos e `aria-live`. Não houve teste com leitor de tela, movimento reduzido nem a ordem completa do Tab.
 
-## Próximos passos (não feitos)
-Ideias que saem das limitações acima; **nenhuma está implementada**.
-- Mostrar os erros por código em `/api/v1/uso` (hoje só há a contagem total).
-- Responder ao solicitante quando o texto não é pedido (422) e avisar Compras quando o pedido vem completo.
-- Fazer o e-mail pedir também unidade e moeda quando faltarem.
-- Repetir a medição com mais pedidos, mais rodadas e casos escritos por outra pessoa.
-- Testar o portal com leitor de tela e conferir a ordem completa do Tab.
-
 ## Como foi construído
 Código da API escrito com um assistente de código de IA (Claude), a partir do desenho e das regras definidos pelo autor. A primeira tentativa de base no v0 foi abandonada; o v0 acabou sendo usado na camada de interface: o portal foi gerado nele, em um app separado que consome esta API, em três etapas com plano aprovado antes de cada código. O fluxo do n8n foi montado por um assistente de IA (Claude), pelas ferramentas do n8n, a partir do desenho do autor, e testado e publicado por ele. O registro de cada etapa, com o que foi verificado e o que não foi, está em [`docs/vibe_coding.md`](docs/vibe_coding.md).
+
+## Conclusão
+O projeto entrega, de ponta a ponta, o que se propôs: um pedido de compra em texto livre entra pelo formulário do n8n ou pelo portal, passa pela API e sai como 8 campos estruturados, a lista do que falta e um e-mail pedindo só o que faltou, com custo medido por pedido.
+
+**Concluído e comprovado**
+- **API publicada** com 7 rotas, contrato OpenAPI 3.1, autenticação por chave, teto de gasto, limite diário e idempotência, coberta por 28 testes que não chamam o modelo.
+- **Medição em 20 pedidos fictícios**, com gabarito registrado antes da execução: 160 de 160 campos, 20 de 20 status e 10 de 10 e-mails corretos, mediana de 2,03 s e custo médio de US$ 0,000218 por pedido. Nos 5 pedidos cronometrados à mão, o processo manual levou em média 119 s e a API 2,29 s de execução no n8n (medidas de natureza diferente, como explicado em [Resultados](#resultados)).
+- **Fluxo no n8n testado**: pedido incompleto gera o e-mail certo e uma linha na tabela; texto que não é pedido é registrado como `pedido_sem_item`, sem e-mail.
+- **Portal público feito no v0**, com o segredo da demo só no servidor e 16 testes passando com as versões travadas no `pnpm-lock.yaml`.
+- **Dois repositórios públicos**, sem chaves ou segredos, com os prompts P1 v2 e P3 v2 sem alteração.
+
+**Alcance dos resultados:** amostra de 20 pedidos em uma rodada, casos escritos com ajuda de IA e revisados pelo autor, comparação manual com 5 cronometragens, portal sem teste com leitor de tela e formulário de produção do n8n despublicado. Esses limites estão em [Limitações](#limitações). Os números do [Prompt Lab](https://github.com/Prodigyb0y/prompt-lab) são do laboratório, não desta API.

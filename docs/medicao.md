@@ -1,4 +1,6 @@
-# Plano de medição
+# Método da medição
+
+Este é o plano seguido na medição de 21/11/2026. Os números, o método aplicado e as limitações estão em [`resultados_medicao.md`](resultados_medicao.md).
 
 Objetivo: medir a API no fluxo real (n8n → API → planilha → e-mail), não só no laboratório.
 
