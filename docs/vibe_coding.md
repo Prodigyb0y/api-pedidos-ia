@@ -14,6 +14,8 @@ Registro honesto de quais ferramentas de IA fizeram cada parte.
 
 **Verificado em 22/11/2026 no site publicado:** um único `h1` por página testada, lista ordenada de 5 itens, link de salto com destino focável, `<label>` no campo, regiões `aria-live`, seta para a direita nas abas movendo foco e seleção juntos, e Campos mostrando `15/12/2026` e `R$ 18,50`. **Não verificado:** leitura por leitor de tela, comportamento com movimento reduzido, ordem completa do Tab, e os contrastes do tema claro foram medidos pelo v0, não por mim.
 
-Código do portal (público): https://github.com/Prodigyb0y/api-pedidos-portal (branch `main`, idêntica à `v0/como-integra-a11y`, commit `c07b9f8`). Conferido em 22/11/2026: sem `.env`, sem `sk-ant-` e sem valor de segredo nos 3 commits; a `DEMO_API_KEY` só é lida no servidor.
+Código do portal (público): https://github.com/Prodigyb0y/api-pedidos-portal (branch `main`, commit `fd7270e`). O código gerado pelo v0 está até o commit `c07b9f8`; depois o autor adicionou um README, trocou o nome do pacote (`my-project` para `api-pedidos-portal`), removeu 5 arquivos de placeholder de `public/` que nenhum arquivo usava e criou o script `npm test`. Conferido em 22/11/2026: sem `.env`, sem `sk-ant-` e sem valor de segredo nos 3 commits do v0; a `DEMO_API_KEY` só é lida no servidor.
+
+**Testes do portal:** em 22/11/2026, o autor rodou `npm test` na própria máquina (`node --test`, com mock de rede, sem chamar a API real): 15 de 15 passaram. Antes, os 15 testes só constavam no log do v0.
 
 Quem fez o quê: o desenho, os prompts, a aprovação dos planos e a publicação são do autor; o código do portal foi gerado pelo v0; a API e a documentação foram escritas com um assistente de código a partir do desenho do autor; o fluxo do n8n foi montado por um assistente de IA pelas ferramentas do n8n, a partir do desenho do autor, e testado e publicado por ele.
