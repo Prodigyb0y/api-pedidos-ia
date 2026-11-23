@@ -10,7 +10,18 @@
 <sub>Captura do Console publicado no portal, em 22/11/2026, com um pedido fictício processado de verdade (custo e tempo do modelo no topo do resultado). Foi tirada antes do ajuste que formata valor e data na aba Campos, por isso aparecem como `18.5` e `2026-12-15`; hoje o portal mostra `R$ 18,50` e `15/12/2026`.</sub>
 
 ## Sumário
-[A dor que resolve](#a-dor-que-resolve) · [Como resolve](#como-resolve) · [Resultados](#resultados) · [Arquitetura](#arquitetura) · [Tecnologias](#tecnologias) · [Decisões de projeto](#decisões-de-projeto) · [API](#api) · [Como rodar](#como-rodar) · [Estrutura](#estrutura-do-repositório) · [Limitações](#limitações) · [Como foi construído](#como-foi-construído)
+[Mapa dos repositórios](#mapa-dos-repositórios) · [A dor que resolve](#a-dor-que-resolve) · [Como resolve](#como-resolve) · [Resultados](#resultados) · [Arquitetura](#arquitetura) · [Tecnologias](#tecnologias) · [Decisões de projeto](#decisões-de-projeto) · [API](#api) · [Como rodar](#como-rodar) · [Estrutura](#estrutura-do-repositório) · [Limitações](#limitações) · [Como foi construído](#como-foi-construído)
+
+## Mapa dos repositórios
+O projeto tem dois repositórios que se complementam. **Este é o principal**: conta a história inteira (problema, resultados medidos, arquitetura e limitações).
+
+| Repositório | Papel | Leia se você quer… |
+|---|---|---|
+| [`api-pedidos-ia`](https://github.com/Prodigyb0y/api-pedidos-ia) (este) | **A API**: lê o pedido em texto livre, valida e devolve os dados e o e-mail de pendências. Também guarda os prompts, os testes, a medição e o fluxo do n8n. | entender o problema, o resultado e as decisões técnicas |
+| [`api-pedidos-portal`](https://github.com/Prodigyb0y/api-pedidos-portal) | **O portal**: site feito no v0 que mostra a API funcionando (console de teste, uso, documentação). Só consome a API. | ver a interface e como o v0 foi usado |
+
+- **Leitura rápida (RH):** abra o [portal](https://api-pedidos-portal.vercel.app/console), teste um dos 4 exemplos e veja a seção [Resultados](#resultados) abaixo.
+- **Leitura técnica:** [Arquitetura](#arquitetura), [Decisões de projeto](#decisões-de-projeto), os testes em [`test/`](test), o fluxo em [`docs/n8n.md`](docs/n8n.md) e o registro de uso de IA em [`docs/vibe_coding.md`](docs/vibe_coding.md).
 
 ## A dor que resolve
 O time de compras recebe pedidos por e-mail ou mensagem, em texto livre. Para cada um, alguém redigita item, quantidade, unidade, prazo, valor e fornecedor numa planilha e, quando falta informação, escreve outro e-mail pedindo o que faltou. É trabalho repetitivo, sujeito a erro de digitação e lento.
@@ -106,6 +117,28 @@ Resposta (resumida):
   "modelo": "claude-haiku-5-5", "custo_usd": 0.00028, "chamadas_ao_modelo": 2
 }
 ```
+**Exemplo do e-mail gerado** (pedido do `curl` acima, recebido na caixa de entrada pelo fluxo do n8n):
+
+![E-mail de pendências recebido no Gmail](docs/img/email_recebido.png)
+
+O corpo do e-mail pede só o que faltou:
+
+> Olá,
+>
+> Recebemos sua solicitação de compra de 25 kg de detergente industrial.
+>
+> Para dar andamento, precisamos das seguintes informações:
+>
+> - valor unitário (informe também a moeda)
+> - fornecedor
+>
+> Assim que receber, seguimos com a cotação.
+>
+> Obrigado,
+> Equipe de Compras · Gutenberg Systems
+
+A redação muda um pouco a cada execução do modelo; o que o código garante é que o e-mail cite exatamente os campos em `faltantes`. Há outros e-mails reais, com os respectivos pedidos, em [`medicao/resultados_brutos.json`](medicao/resultados_brutos.json).
+
 As rotas com chave exigem o cabeçalho `x-api-key`. Para testar sem chave, use o [portal](https://api-pedidos-portal.vercel.app/console).
 
 ## Como rodar
