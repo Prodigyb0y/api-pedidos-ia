@@ -14,4 +14,6 @@ Registro honesto de quais ferramentas de IA fizeram cada parte.
 
 **Verificado em 22/11/2026 no site publicado:** um único `h1` por página testada, lista ordenada de 5 itens, link de salto com destino focável, `<label>` no campo, regiões `aria-live`, seta para a direita nas abas movendo foco e seleção juntos, e Campos mostrando `15/12/2026` e `R$ 18,50`. **Não verificado:** leitura por leitor de tela, comportamento com movimento reduzido, ordem completa do Tab, e os contrastes do tema claro foram medidos pelo v0, não por mim.
 
+Código do portal (público): https://github.com/Prodigyb0y/api-pedidos-portal (branch `main`, idêntica à `v0/como-integra-a11y`, commit `c07b9f8`). Conferido em 22/11/2026: sem `.env`, sem `sk-ant-` e sem valor de segredo nos 3 commits; a `DEMO_API_KEY` só é lida no servidor.
+
 Quem fez o quê: o desenho, os prompts, a aprovação dos planos e a publicação são do autor; o código do portal foi gerado pelo v0; a API e a documentação foram escritas com um assistente de código a partir do desenho do autor.

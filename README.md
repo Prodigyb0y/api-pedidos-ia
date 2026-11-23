@@ -2,7 +2,7 @@
 
 **Pedido de compra em texto livre vira dados prontos e um e-mail pedindo só o que faltou.** Uma API leve (JavaScript em funções da Vercel), integrada a um fluxo de automação no n8n e a um portal público, que usa um modelo de linguagem com validação, custo e limites controlados em código.
 
-[Portal de demonstração](https://api-pedidos-portal.vercel.app) · [API publicada](https://api-pedidos-mu.vercel.app) · [Especificação OpenAPI](https://api-pedidos-mu.vercel.app/api/openapi.json) · [Resultados medidos](docs/resultados_medicao.md) · [Prompt Lab](https://github.com/Prodigyb0y/prompt-lab)
+[Portal de demonstração](https://api-pedidos-portal.vercel.app) · [Código do portal](https://github.com/Prodigyb0y/api-pedidos-portal) · [API publicada](https://api-pedidos-mu.vercel.app) · [Especificação OpenAPI](https://api-pedidos-mu.vercel.app/api/openapi.json) · [Resultados medidos](docs/resultados_medicao.md) · [Prompt Lab](https://github.com/Prodigyb0y/prompt-lab)
 
 > Projeto de portfólio com **empresa, pessoas e pedidos 100% fictícios** (Gutenberg Systems). Nenhum dado, nome ou sistema de empresa real.
 
@@ -54,7 +54,7 @@ flowchart LR
     J --> B
 ```
 - O **n8n** recebe o pedido, chama a API com autenticação por cabeçalho, grava o resultado numa tabela e envia o e-mail quando o pedido está pendente. O desenho está em [`docs/n8n.md`](docs/n8n.md) e o fluxo exportado (sem credenciais) em [`n8n/fluxo_pedidos.json`](n8n/fluxo_pedidos.json).
-- O **portal** é um app separado que só consome a API. O segredo da demo fica no servidor do portal e nunca chega ao navegador (conferido nos cabeçalhos, na resposta e no HTML).
+- O **portal** é um app separado (código em [`api-pedidos-portal`](https://github.com/Prodigyb0y/api-pedidos-portal)) que só consome a API. O segredo da demo fica no servidor do portal e nunca chega ao navegador (conferido nos cabeçalhos, na resposta e no HTML).
 
 ## Tecnologias
 | Camada | O que usa |
