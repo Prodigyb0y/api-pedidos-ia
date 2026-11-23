@@ -228,7 +228,7 @@ docs/              n8n, plano e resultados da medição, registro de como foi co
 - Sem a integração de Redis, limites e teto valem por instância, não para a API inteira.
 - O e-mail pede só quatro campos (área, prazo, valor com moeda e fornecedor); unidade e moeda sozinhas não geram pedido de informação.
 - A conferência do e-mail é por nome exato do campo: um e-mail correto escrito com outro nome seria recusado.
-- No fluxo do n8n, um texto que não é pedido (422) é registrado, mas o solicitante não recebe resposta; e pedido completo não gera aviso para Compras (detalhes em [`docs/n8n.md`](docs/n8n.md)).
+- No fluxo do n8n, um texto que não é pedido (422) é registrado com o status `pedido_sem_item` (confirmado em execução manual do n8n em 22/11/2026), mas o solicitante não recebe resposta; e pedido completo não gera aviso para Compras (detalhes em [`docs/n8n.md`](docs/n8n.md)).
 - Do portal, só foram verificados por inspeção e teclado: abas, link de salto, rótulos e `aria-live`. Não houve teste com leitor de tela, movimento reduzido nem a ordem completa do Tab.
 
 ## Próximos passos (não feitos)
